@@ -63,7 +63,7 @@ def lookup_value(nvic):
 
 def lambda_handler(event, context):
 
-    print event
+    print(event)
     reg_num = event['body-json'][
         'exposureCharacteristics']['fieldValues']['nvic'][0]
 
@@ -78,7 +78,7 @@ def main(argv):
     args = parser.parse_args(argv)
 
     value = lookup_value(args.nvic)
-    print json.dumps(value)
+    print(json.dumps(value))
 
 
 if __name__ == '__main__':

@@ -80,7 +80,7 @@ def get_aggregate_report(report):
 
     result = []
     for key, grp in groupby(sorted(ft_dict, key=grouper), grouper):
-        temp_dict = dict(zip(["Product Name", "Transaction Type"], key))
+        temp_dict = dict(list(zip(["Product Name", "Transaction Type"], key)))
         temp_dict["Amount"] = round(sum(float(item["Amount"]) for item in grp), 2)
         result.append(temp_dict)
 
@@ -88,7 +88,7 @@ def get_aggregate_report(report):
 
 
 def write_output(outputfile, aggr_dict):
-    keys = aggr_dict[0].keys()
+    keys = list(aggr_dict[0].keys())
     with open(outputfile, 'wb') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
@@ -99,7 +99,7 @@ def main(argv):
 
     args = parse_args()
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
 
     # create a client
     client = SocotraClient.get_authenticated_client_for_hostname(
@@ -114,7 +114,7 @@ def main(argv):
     # write aggregate report to file
     write_output(args.outputfile, aggr_report)
 
-    print 'Output written to file: ' + args.outputfile
+    print('Output written to file: ' + args.outputfile)
 
 
 if __name__ == "__main__":

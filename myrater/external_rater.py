@@ -57,12 +57,12 @@ def process_triplets(policy, triplets):
 # external data call request from Socotra.  See README for more details.
 
 def lambda_handler(event, context):
-    print json.dumps(event)
+    print(json.dumps(event))
     policy = event['body-json']['policy']
     triplets = event['body-json']['policyExposurePerils']
 
     output = process_triplets(policy, triplets)
-    print json.dumps(output)    # Provided for logging purposes
+    print(json.dumps(output))    # Provided for logging purposes
     return output
 
 
@@ -84,7 +84,7 @@ def main(argv):
 
     args = parser.parse_args(argv)
     hostname = args.hostname
-    print 'Authenticating with tenant: ' + hostname
+    print('Authenticating with tenant: ' + hostname)
     client = SocotraClient.get_authenticated_client_for_hostname(
         hostname, args.username, args.password)
     policy = client.get_policy(args.id)
@@ -107,7 +107,7 @@ def main(argv):
                          'perilCharacteristicsLocator': peril_char_locator})
 
     output = process_triplets(policy, triplets)
-    print json.dumps(output)
+    print(json.dumps(output))
 
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@ def main(argv):
     else:
         provider = None
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password, debug=False, identity=provider)
 
@@ -37,7 +37,7 @@ def main(argv):
     }
 
     ph = client.create_policyholder(values=ph_values)
-    print ph['locator']
+    print(ph['locator'])
 
 
 if __name__ == "__main__":

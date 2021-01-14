@@ -15,7 +15,7 @@ def process_vin(vin_input):
 
     # Check if there was a successful result
     if vin_return.get('Count') == 1:
-        print 'Success'
+        print('Success')
         car = vin_return['Results'][0]
         make = car['Make']
         model = car['Model']
@@ -45,7 +45,7 @@ def main(argv):
     args = parser.parse_args(argv)
 
     result = process_vin(args.vin)
-    print json.dumps(result)
+    print(json.dumps(result))
 
 
 if __name__ == "__main__":

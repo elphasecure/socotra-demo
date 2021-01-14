@@ -179,9 +179,9 @@ def post_zip_to_server(
         json_response = json.loads(response.text)
     except ValueError:
         print("An error happened!\n")
-        print("Headers: %s" % response.headers)
-        print("Status Code: %s" % response.status_code)
-        print("Data: %s" % response.text)
+        print(("Headers: %s" % response.headers))
+        print(("Status Code: %s" % response.status_code))
+        print(("Data: %s" % response.text))
         return
 
     if json_response.get("success"):

@@ -17,9 +17,9 @@ class SocotraClient:
     def __debug(self, string):
         if self.debug:
             if type(string) == dict:
-                print json.dumps(string)
+                print((json.dumps(string)))
             else:
-                print string
+                print(string)
 
     # Used for permissions
     def is_allowed(self, method_name):
@@ -94,7 +94,7 @@ class SocotraClient:
             return {'Error 403': 'Unauthorized for ' + caller}
 
     def __validate_unauthenticated(self):
-        if "Authorization" in self.session.headers.keys():
+        if "Authorization" in list(self.session.headers.keys()):
             raise Exception(
                 'Client already authenticated. Please create a new client and authenticate again')
 

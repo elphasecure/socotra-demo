@@ -24,7 +24,7 @@ def main(argv):
     #           'a_third_party_liability.premium.liquid', "r") as f:
     #     calculation = f.read()
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password)
 
@@ -60,7 +60,7 @@ def main(argv):
                                   exposures=[exposure, exposure],
                                   finalize=False)
 
-    print json.dumps(policy)
+    print(json.dumps(policy))
     policy_locator = policy['locator']
     client.uw_policy(policy_locator)
     client.price_policy(policy_locator)

@@ -7,7 +7,7 @@ from socotratools import dates
 
 def process_events(events):
     for event in events:
-        print event['id'] + ' - ' + event['type'] + ' - ' + event['timestamp']
+        print(event['id'] + ' - ' + event['type'] + ' - ' + event['timestamp'])
 
 
 def main(argv):
@@ -22,7 +22,7 @@ def main(argv):
     parser.add_argument('-p', '--password', default='socotra', required=False)
     args = parser.parse_args(argv)
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password)
 

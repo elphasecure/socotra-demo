@@ -18,13 +18,13 @@ def main(argv):
     parser.add_argument('-l', '--locator', required=True)
     args = parser.parse_args(argv)
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print(('Authenticating with tenant: ' + args.hostname))
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password,
         api_url='https://api-iag.socotra.com')
 
     policy = client.get_policy(args.locator)
-    print json.dumps(policy)
+    print((json.dumps(policy)))
 
 
 if __name__ == "__main__":

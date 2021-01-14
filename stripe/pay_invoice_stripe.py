@@ -21,10 +21,10 @@ def get_stripe_customer(client, ph_locator):
     ph = client.get_policyholder(ph_locator)
     ph_id = ph['entity']['values']['policyholder_id'][0]
 
-    if ph_id in stripe_customers.keys():
+    if ph_id in list(stripe_customers.keys()):
         customer_id = stripe_customers[ph_id]
     else:
-        print 'Creating Stripe account and storing token'
+        print('Creating Stripe account and storing token')
         customer = stripe.Customer.create(source='tok_mastercard')
         stripe_customers[ph_id] = customer.id
         customer_id = customer.id
@@ -43,7 +43,7 @@ def main(argv):
     parser.add_argument('-ph', '--ph_locator', required=True)
     args = parser.parse_args(argv)
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password)
 
@@ -65,10 +65,10 @@ def main(argv):
             if charge['status'] == 'succeeded':
                 # if Stripe succeeded, mark the invoice paid in Socotra
                 client.pay_invoice(invoice['locator'])
-                print 'Invoice paid for policyholder ' + ph_id + \
-                    ' regarding invoice ' + invoice['displayId']
+                print('Invoice paid for policyholder ' + ph_id + \
+                    ' regarding invoice ' + invoice['displayId'])
             else:
-                print 'Stripe payment failed'
+                print('Stripe payment failed')
 
 
 if __name__ == "__main__":

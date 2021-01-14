@@ -43,7 +43,7 @@ def main(argv):
         request_json["exposureCharacteristics"],
         request_json["perilName"],
         request_json["perilCharacteristics"])
-    print json.dumps(response, sort_keys=True, indent=4, separators=(',', ':')) + "\n"
+    print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ':')) + "\n")
 
 
 if __name__ == "__main__":

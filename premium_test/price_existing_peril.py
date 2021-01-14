@@ -28,4 +28,4 @@ with open(args.calculation_file, "r") as f:
 
 response = socotra_client.check_existing_peril_premium(
     calculation, args.peril_id)
-print json.dumps(response, sort_keys=True, indent=4, separators=(',', ':')) + "\n"
+print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ':')) + "\n")

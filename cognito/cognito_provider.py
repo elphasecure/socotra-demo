@@ -48,7 +48,7 @@ class CognitoIdentity:
         perms = []
         groups = self.get_groups(token)
         roles = self.identity['roles']
-        for role in roles.keys():
+        for role in list(roles.keys()):
             if role in groups:
                 perms = perms + roles[role]
         return perms
@@ -56,7 +56,7 @@ class CognitoIdentity:
     def get_all_perms(self):
         perms = []
         roles = self.identity['roles']
-        for role in roles.keys():
+        for role in list(roles.keys()):
                 perms = perms + roles[role]
         return perms
 

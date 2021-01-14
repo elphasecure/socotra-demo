@@ -32,7 +32,7 @@ def main(argv):
     with open('ref_driver.json', 'r') as f:
         driver = json.load(f)
 
-    print 'Authenticating with tenant: ' + args.hostname
+    print('Authenticating with tenant: ' + args.hostname)
     environment = args.environment
     if environment == 'iag':
         url = 'https://api-iag.socotra.com'
@@ -40,7 +40,7 @@ def main(argv):
         url = 'https://api-db-internal.socotra.com'
     else:
         url = 'https://api.sandbox.socotra.com'
-    print url
+    print(url)
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password, api_url=url, debug=False)
 
@@ -50,22 +50,22 @@ def main(argv):
     en1 = client.create_endorsement(
         policy_locator, 'generic', effective_timestamp=en1_eff,
         field_values=policy_change)
-    print json.dumps(en1)
+    print(json.dumps(en1))
     en1_locator = en1['locator']
-    print en1_locator
+    print(en1_locator)
 
     en1_price = client.price_endorsement(en1_locator)
-    print json.dumps(en1_price)
-    print
+    print(json.dumps(en1_price))
+    print()
     en1 = client.get_endorsement(en1_locator)
-    print json.dumps(en1)
+    print(json.dumps(en1))
 
     accept_result = client.update_endorsement(en1_locator, action='accept')
-    print json.dumps(accept_result)
-    print
+    print(json.dumps(accept_result))
+    print()
     en1 = client.get_endorsement(en1_locator)
-    print json.dumps(en1)
-    print en1['documents'][0]['url']
+    print(json.dumps(en1))
+    print(en1['documents'][0]['url'])
 
 
 if __name__ == "__main__":
