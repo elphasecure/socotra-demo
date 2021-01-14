@@ -16,12 +16,14 @@ def main(argv):
                         default='iag.tester', required=False)
     parser.add_argument('-p', '--password', default='Satellit31!', required=False)
     parser.add_argument('-l', '--locator', required=True)
+    parser.add_argument('-a', '--api', required=True)
     args = parser.parse_args(argv)
 
     print(('Authenticating with tenant: ' + args.hostname))
     client = SocotraClient.get_authenticated_client_for_hostname(
         args.hostname, args.username, args.password,
-        api_url='https://api-iag.socotra.com')
+        #api_url='https://api-iag.socotra.com')
+        api_url=args.api)
 
     policy = client.get_policy(args.locator)
     print((json.dumps(policy)))
